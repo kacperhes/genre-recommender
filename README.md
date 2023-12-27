@@ -16,11 +16,11 @@ docker pull neo4j
 
 ```bash
 docker run \
-  --name soundcloud-neo4j \
+  --name songs-recommender-neo4j \
   --publish=7475:7474 \
   --publish=7688:7687 \
   --env NEO4J_AUTH=neo4j/password \
-  --detach \
+  --d \
   neo4j
 ```
 
