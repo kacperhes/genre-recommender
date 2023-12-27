@@ -73,7 +73,44 @@ def get_tracks_by_genres():
     except Exception as e:
         response = {'success': False, 'error': str(e)}
         return jsonify(response)
-    
+
+
+def add_tags_to_genres(self, genres, tags):
+        with self._driver.session() as session:
+            for genre, tag in zip(genres, tags):
+                session.run("""
+                MATCH (g:Genre {name: 'Acoustic Folk Genre'})
+                MERGE (t1:Tag {name: 'Acoustic'})-[:HAS_TAG]->(g)
+
+                MATCH (g:Genre {name: 'Alt Music Genre'})
+                MERGE (t2:Tag {name: 'Alternative'})-[:HAS_TAG]->(g)
+
+                MATCH (g:Genre {name: 'Blues Genre'})
+                MERGE (t3:Tag {name: 'Blues'})-[:HAS_TAG]->(g)
+                
+                MATCH (g:Genre {name: 'Bollywood Music Genre'})
+                MERGE (t4:Tag {name: 'Bollywood'})-[:HAS_TAG]->(g)
+                
+                MATCH (g:Genre {name: 'Country Music Genre'})
+                MERGE (t5:Tag {name: 'Country'})-[:HAS_TAG]->(g)
+                
+                MATCH (g:Genre {name: 'HipHop Music Genre'})
+                MERGE (t6:Tag {name: 'HipHop'})-[:HAS_TAG]->(g)
+                
+                MATCH (g:Genre {name: 'Indie Music Genre'})
+                MERGE (t7:Tag {name: 'Indie'})-[:HAS_TAG]->(g)
+                
+                MATCH (g:Genre {name: 'Instrumental Music Genre'})
+                MERGE (t8:Tag {name: 'Instrumental'})-[:HAS_TAG]->(g)
+                
+                MATCH (g:Genre {name: 'Metal Music Genre'})
+                MERGE (t9:Tag {name: 'Metal'})-[:HAS_TAG]->(g)
+                
+                MATCH (g:Genre {name: 'Pop Music Genre'})
+                MERGE (t10:Tag {name: 'Pop'})-[:HAS_TAG]->(g)
+                """, genre=genre, tag=tag)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
         
