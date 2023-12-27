@@ -79,35 +79,41 @@ def add_tags_to_genres(self, genres, tags):
         with self._driver.session() as session:
             for genre, tag in zip(genres, tags):
                 session.run("""
-                MATCH (g:Genre {name: 'Acoustic Folk Genre'})
-                MERGE (t1:Tag {name: 'Acoustic'})-[:HAS_TAG]->(g)
-
-                MATCH (g:Genre {name: 'Alt Music Genre'})
-                MERGE (t2:Tag {name: 'Alternative'})-[:HAS_TAG]->(g)
-
-                MATCH (g:Genre {name: 'Blues Genre'})
-                MERGE (t3:Tag {name: 'Blues'})-[:HAS_TAG]->(g)
+                MATCH (g:Genre {name: 'Rock'})
+                MERGE (t1:Tag {name: '1: Rock'})-[:HAS_TAG]->(g)
                 
-                MATCH (g:Genre {name: 'Bollywood Music Genre'})
-                MERGE (t4:Tag {name: 'Bollywood'})-[:HAS_TAG]->(g)
+                MATCH (g:Genre {name: 'Indie'})
+                MERGE (t2:Tag {name: '2: Indie'})-[:HAS_TAG]->(g)
                 
-                MATCH (g:Genre {name: 'Country Music Genre'})
-                MERGE (t5:Tag {name: 'Country'})-[:HAS_TAG]->(g)
+                MATCH (g:Genre {name: 'Alt'})
+                MERGE (t3:Tag {name: '3: Alt'})-[:HAS_TAG]->(g)
                 
-                MATCH (g:Genre {name: 'HipHop Music Genre'})
-                MERGE (t6:Tag {name: 'HipHop'})-[:HAS_TAG]->(g)
+                MATCH (g:Genre {name: 'Pop'})
+                MERGE (t4:Tag {name: '4: Pop'})-[:HAS_TAG]->(g)
                 
-                MATCH (g:Genre {name: 'Indie Music Genre'})
-                MERGE (t7:Tag {name: 'Indie'})-[:HAS_TAG]->(g)
+                MATCH (g:Genre {name: 'Metal'})
+                MERGE (t5:Tag {name: '5: Metal'})-[:HAS_TAG]->(g)
                 
-                MATCH (g:Genre {name: 'Instrumental Music Genre'})
-                MERGE (t8:Tag {name: 'Instrumental'})-[:HAS_TAG]->(g)
+                MATCH (g:Genre {name: 'HipHop'})
+                MERGE (t6:Tag {name: '6: HipHop'})-[:HAS_TAG]->(g)
                 
-                MATCH (g:Genre {name: 'Metal Music Genre'})
-                MERGE (t9:Tag {name: 'Metal'})-[:HAS_TAG]->(g)
+                MATCH (g:Genre {name: 'AltMusic'})
+                MERGE (t7:Tag {name: '7: AltMusic'})-[:HAS_TAG]->(g)
                 
-                MATCH (g:Genre {name: 'Pop Music Genre'})
-                MERGE (t10:Tag {name: 'Pop'})-[:HAS_TAG]->(g)
+                MATCH (g:Genre {name: 'Blues'})
+                MERGE (t8:Tag {name: '8: Blues'})-[:HAS_TAG]->(g)
+                
+                MATCH (g:Genre {name: 'Acoustic/Folk'})
+                MERGE (t9:Tag {name: '9: Acoustic/Folk'})-[:HAS_TAG]->(g)
+                
+                MATCH (g:Genre {name: 'Instumental'})
+                MERGE (t10:Tag {name: '10: Instumental'})-[:HAS_TAG]->(g)
+                
+                MATCH (g:Genre {name: 'Country'})
+                MERGE (t11:Tag {name: '11: Country'})-[:HAS_TAG]->(g)
+                
+                MATCH (g:Genre {name: 'Bollywood'})
+                MERGE (t12:Tag {name: '12: Bollywood'})-[:HAS_TAG]->(g)
                 """, genre=genre, tag=tag)
 
 
