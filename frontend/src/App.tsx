@@ -1,4 +1,4 @@
-import { Autocomplete, Box, Button, Container, TextField } from "@mui/material";
+import { Autocomplete, Box, Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -48,7 +48,9 @@ function App() {
   return (
     <div className="App">
       <Container maxWidth='lg'>
-        <h1>Song recommender</h1>
+        <Typography variant="h3" sx={{ mb: 2 }}>
+          Songs recommender
+        </Typography>
         <Box sx={{ mb: 4 }}>
           <Autocomplete
             freeSolo
@@ -66,12 +68,39 @@ function App() {
             Search Recommendations
           </Button>
         </Box>
+        <Typography variant="h6" sx={{ mb: 2 }}>
+          Top 25 results
+        </Typography>
         <Box>
-          {suggestions.length > 0 && suggestions.map((suggestion, index) => (
-            <li key={index}>
-              <strong>{suggestion.name}</strong> by {suggestion.artist} ({suggestion.genre})
-            </li>
-          ))}
+          {suggestions.length > 0 && (
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="Suggestions table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>#</TableCell>
+                    <TableCell align="right">Song name</TableCell>
+                    <TableCell align="right">Artist</TableCell>
+                    <TableCell align="right">Genre</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {suggestions.map((suggestion, index) => (
+                    <TableRow 
+                      key={`track-${index}`}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {index + 1}
+                      </TableCell>
+                      <TableCell align="right">{suggestion.name}</TableCell>
+                      <TableCell align="right">{suggestion.artist}</TableCell>
+                      <TableCell align="right">{suggestion.genre}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          )}
         </Box>
       </Container>
     </div>

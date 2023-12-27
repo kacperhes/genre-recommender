@@ -1,6 +1,6 @@
 # Music Genre Recommender
 
-A simple website that allows you to search different songs in SoundCloud platform (SoundCloud API) by tags that uses neo4j under the hood because of graph structure of music genres.
+A simple website that allows you to search different songs by tags that uses neo4j under the hood because of graph structure of music genres.
 
 ## Running database locally
 

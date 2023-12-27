@@ -1,4 +1,3 @@
 neo4j
-spotipy
 pandas
 flask
